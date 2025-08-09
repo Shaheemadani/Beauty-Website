@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - Lustra Beauty</title>
+  <link rel="stylesheet" href="css/checkout.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('images/checkoutpage_background1.avif') no-repeat center center fixed;
+  background-size: cover;
+}
+  </style>
+
+
+<div class="container">
+  <!-- Step 1: Customer Info -->
+  <div class="step active" id="customer-step">
+    <h2>Customer Information</h2>
+    <form id="customer-form">
+      <input type="text" id="fullName" placeholder="Full Name" required />
+      <input type="text" id="city" placeholder="City" required />
+
+      <select id="district" required>
+        <option value="" disabled selected>Select District</option>
+        <option value="Ampara">Ampara</option>
+        <option value="Anuradhapura">Anuradhapura</option>
+        <option value="Badulla">Badulla</option>
+        <option value="Batticaloa">Batticaloa</option>
+        <option value="Colombo">Colombo</option>
+        <option value="Galle">Galle</option>
+        <option value="Gampaha">Gampaha</option>
+        <option value="Hambantota">Hambantota</option>
+        <option value="Jaffna">Jaffna</option>
+        <option value="Kalutara">Kalutara</option>
+        <option value="Kandy">Kandy</option>
+        <option value="Kegalle">Kegalle</option>
+        <option value="Kilinochchi">Kilinochchi</option>
+        <option value="Kurunegala">Kurunegala</option>
+        <option value="Mannar">Mannar</option>
+        <option value="Matale">Matale</option>
+        <option value="Matara">Matara</option>
+        <option value="Monaragala">Monaragala</option>
+        <option value="Mullaitivu">Mullaitivu</option>
+        <option value="Nuwara Eliya">Nuwara Eliya</option>
+        <option value="Polonnaruwa">Polonnaruwa</option>
+        <option value="Puttalam">Puttalam</option>
+        <option value="Ratnapura">Ratnapura</option>
+        <option value="Trincomalee">Trincomalee</option>
+        <option value="Vavuniya">Vavuniya</option>
+      </select>
+
+      <input type="text" id="street" placeholder="Street" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <div class="btn-group">
+        <button onclick="window.location.href='cart.html'" >Back</button>
+        <button type="button" id="to-payment">Next</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Step 2: Payment -->
+  <div class="step" id="payment-step">
+    <h2>Payment Method</h2>
+    <form id="payment-form" method="post" action="save_order.php">
+      <!-- Hidden Inputs to Pass Data to Backend -->
+      <input type="hidden" name="fullName" id="hiddenFullName">
+      <input type="hidden" name="city" id="hiddenCity">
+      <input type="hidden" name="district" id="hiddenDistrict">
+      <input type="hidden" name="street" id="hiddenStreet">
+      <input type="hidden" name="phone" id="hiddenPhone">
+      <input type="hidden" name="email" id="hiddenEmail">
+      <input type="hidden" name="paymentMethod" id="hiddenPayment">
+      <input type="hidden" name="totalAmount" id="totalAmountInput">
+      <div class="payment-option">
+        <input type="radio" id="cod" name="payment" value="Cash on Delivery" checked />
+        <label for="cod"><i class="fas fa-money-bill"></i> Cash on Delivery</label>
+      </div>
+      <div class="payment-option">
+        <input type="radio" id="card" name="payment" value="Card" />
+        <label for="card"><i class="fas fa-credit-card"></i> Credit/Debit Card</label>
+      </div>
+      <div id="card-details">
+        <input type="text" id="card-number" placeholder="Card Number" />
+        <input type="text" id="card-name" placeholder="Name on Card" />
+        <div style="display: flex; gap: 10px;">
+          <input type="text" id="card-expiry" placeholder="MM / YY" style="flex:1;" />
+          <input type="text" id="card-cvv" placeholder="CVV" style="flex:1;" />
+        </div>
+      </div>
+
+      <input type="hidden" name="totalAmount" id="totalAmountInput" />
+
+      <div class="btn-group">
+        <button type="button" id="back-to-customer">Back</button>
+        <button type="submit">Place Order</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/checkout.js"></script>
+</body>
+</html>
